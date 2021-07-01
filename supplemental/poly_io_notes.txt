@@ -1,0 +1,36 @@
+poly_io brain storm:
+
+The following is a set of plausible issues I could think of with poly_io code after
+a quick skim. After completing the list I went through each element and associated
+a resolution state as noted in the following legend.
+
+Resolution State Legend:
+- [+]: implemented / added myself
+- [x]: current implementation adequately handled.
+- [ ]: not yet handled / not applicable
+- [-]: will not address / seems outside scope of prompt.
+
+Plausible bad inputs:
+- Within a particular line:
+    - [x] multiple delimiters creating unreadable segments
+    - [+] unexpected reasonable whitespace delimiters
+    - [x] non-float-characters
+    - [x] Unexpected trailing whitespace (e.g. crlf instead of lf) (NOTE: works fine on my linux environment)
+- With an input file:
+    - [x] DNE
+    - [x] unable to open for reading.
+    - [+] no trailing newline prior to EOF
+
+Plausible ill-behavior:
+- Not catching all exception types that are related to input reading.
+    - [x] std::stof (both exception types accounted for)
+    - [x] std::getline (failure exception type caught.)
+- [x] Not closing input file in some execution path
+
+Plausible unexpected input:
+- User amenities such as
+    - [-] Bracket clustering points (e.g. [1, 1] [0, 1] instead of 1 1 0 1)
+    - [-] comma separation
+    - [-] misc unicode characters that are similar to intended characters
+    - [x] different notation types
+    - [+] in-line comments
