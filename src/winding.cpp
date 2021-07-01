@@ -44,7 +44,7 @@ Point ExtractPoint(const poly::Polygon& polygon, int n);
 // Specifies if the given poitns are within tolerance range in both cardinal direction
 bool WithinTolerance(float tolerance, const Point& a, const Point& b);
 
-// Typical fuzzy check, checks for equality out to the n'th decimal.
+// Checks if the difference between a and b is less than max_delta.
 bool FuzzyEquals(float a, float b, float max_delta = 1e-6f);
 
 // A straight forward implementation of IWindingNumberAlgorithm. It uses
